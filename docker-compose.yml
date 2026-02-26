@@ -1,0 +1,41 @@
+# ==============================================================================
+# MASS Docker Compose Configuration
+# ==============================================================================
+# Usage:
+#   docker compose up -d        # Start container in background
+#   docker compose exec mass bash   # Enter the container
+#   docker compose down         # Stop and remove container
+# ==============================================================================
+
+services:
+  mass:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: mass-sim:latest
+    container_name: mass-sim
+    platform: linux/amd64
+
+    # Keep container running
+    stdin_open: true
+    tty: true
+
+    # Mount volumes for persistent data
+    volumes:
+      # Neural network outputs (persist training results)
+      - ./nn_output:/workspace/MASS/nn
+      # Mount data directory (allows editing metadata without rebuild)
+      - ./MASS/data:/workspace/MASS/data
+
+    # Environment variables
+    environment:
+      - DISPLAY=:99
+      - PYTHONPATH=/workspace/MASS/python
+      - LD_LIBRARY_PATH=/usr/local/lib
+
+    # Resource limits (adjust as needed)
+    deploy:
+      resources:
+        limits:
+          memory: 8G
+          cpus: "4"

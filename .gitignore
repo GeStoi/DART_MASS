@@ -1,0 +1,44 @@
+# ==============================================================================
+# DART_MASS Project .gitignore
+# ==============================================================================
+
+# ---- Build artifacts ----
+MASS/build/
+MASS/python/*.so
+MASS/core/*.a
+
+# ---- Training outputs (large, regenerable) ----
+nn_output/
+MASS/nn/
+*.pt
+*.pth
+
+# ---- Training logs & metrics (regenerable) ----
+build.log
+MASS/python/train_log_*.txt
+MASS/python/episode_metrics_*.csv
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.egg
+.eggs/
+
+# ---- OS files ----
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# ---- IDEs / Editors ----
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+*.sublime-project
+*.sublime-workspace
+
+# ---- Upstream MASS git history (we use our own repo) ----
+MASS/.git/

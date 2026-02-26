@@ -1,0 +1,20 @@
+# Ignore build artifacts
+MASS/build/
+MASS/python/*.so
+MASS/core/*.a
+nn_output/
+build.log
+
+# Git
+.git
+MASS/.git
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
